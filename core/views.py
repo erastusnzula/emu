@@ -15,7 +15,13 @@ class Index(View):
 
 class Shop(View):
     def get(self, *args, **kwargs):
-        return render(self.request, 'shop.html')
+        features = Feature.objects.all()
+        products = Product.objects.all()
+        context = {
+            'features': features,
+            'products': products,
+        }
+        return render(self.request, 'shop.html', context)
     
 class Blog(View):
     def get(self, *args, **kwargs):

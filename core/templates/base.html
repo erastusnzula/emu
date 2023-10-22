@@ -34,7 +34,20 @@
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li> 
+                    <span class="nav-link" id="close">
+                        <i class="fa-solid fa-times"></i>
+                    </span>
                 </ul>
+            </div>
+            <div class="collapse-toggle" id="collapse-toggle">
+                <a class="nav-link" href="{% url "core:cart" %}" id="toggle-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <div class="collapse-bars" id="collapse-bars">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </section>
         {% block content%}
