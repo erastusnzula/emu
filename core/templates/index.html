@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<section id="welcome">
+    <h4>Trade-in-offer</h4>
+    <h2>Super vaue deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons up to 70% off!</p>
+    <button>Shop Now</button>
+</section>
+
+<section id="features">
+    {% for feature in features %}
+    <div id="feature-box">
+        <img src="{{feature.image.url}}" alt="">
+        <h6 style="background-color: {{feature.background_color}}">{{feature.title}}</h6>
+    </div>
+    {% endfor %}
+</section>
+<section id="products" class="products">
+    <h2>Featured products</h2>
+    <p>New Modern Design and Summer Collection</p>
+    <div id="product-container" class="product-container">
+        {% for product in products %}
+        <div id="product" class="product">
+            <img src="{{product.image.url}}" alt="">
+            <div id="description" class="description">
+                <span>{{product.brand_name}}</span>
+                <h5>{{product.title}}</h5>
+                <div id="stars" class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>${{product.price}}</h4>
+            </div>
+            <a href="#"><i id="product-cart" class="fa fa-shopping-cart product-cart"></i></a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section id="banner">
+    <h4>Repair Services</h4>
+    <h2>Up to <span>70% off</span> - All T-shirts & Accessories</h2>
+    <button>Explore More</button>
+</section>
+
+<section id="products-new" class="products">
+    <h2>New Arrivals</h2>
+    <p>New Modern Design and Summer Collection</p>
+    <div id="product-container-new" class="product-container">
+        {% for product in products %}
+        <div id="product-new" class="product">
+            <img src="{{product.image.url}}" alt="">
+            <div id="description-new" class="description">
+                <span>{{product.brand_name}}</span>
+                <h5>{{product.title}}</h5>
+                <div id="stars-new" class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>${{product.price}}</h4>
+            </div>
+            <a href="#"><i id="product-cart-new" class="fa fa-shopping-cart product-cart"></i></a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="newsletter">
+    <div id="news-text">
+        <h4>Sign up for NewsLetter</h4>
+        <p>Get E-mail updates about our lattest shop and <span>special offers.</span></p>
+    </div>
+    <div id="news-form" class="form">
+        <input type="text" placeholder="Your email address">
+        <button type="submit">Sign Up</button>
+    </div>
+</section>
+
+{% endblock %}

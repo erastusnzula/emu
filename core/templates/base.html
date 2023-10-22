@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+    </head>
+    <body>
+        <section id="header">
+            <a id="logo" href="/">EMU</a>
+            <div id="navbar">
+                <ul id="nav-items">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home" href="{% url "core:index" %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "core:shop" %}" id="shop">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "core:blog" %}" id="blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "core:about" %}" id="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "core:contact" %}" id="contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "core:cart" %}" id="cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li> 
+                </ul>
+            </div>
+        </section>
+        {% block content%}
+        {% endblock %}
+        <script src="{% static "scripts/script.js" %}"></script>
+    </body>
+</html>
