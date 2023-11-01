@@ -150,7 +150,7 @@ body{
 }
 
 #welcome{
-    background-image: url(../images/backgound.jpg);
+    background-image: url(../images/Publication1.jpg);
     height: 90vh;
     width: 100%;
     background-size: cover;
@@ -385,6 +385,92 @@ body{
 
 #close{
     display: none;
+}
+
+#welcome-shop {
+    background-image: url("../images/banner/b1.jpg");
+    height: 40vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+#welcome-shop h2,
+#welcome-shop p{
+    color: #fff;
+}
+
+.pagination{
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.pagination a{
+    color: #fff;
+    background-color: var(--button-background);
+    font-weight: 600;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+#product-details{
+    padding: var(--section-padding);
+    margin-top: 20px;
+    display: flex;
+}
+
+#product-details .product-details-images{
+    width: 40%;
+    margin-right: 50px;
+}
+
+.product-details-images-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-details-images-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+#product-details .product-details-description{
+    width: 50%;
+    padding-top: 30px;
+}
+
+#product-details .product-details-description h4{
+    padding: 40px 0 20px 0;
+}
+
+#product-details .product-details-description h2{
+    font-size: 26px;
+}
+
+#product-details .product-details-description select{
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+#product-details .product-details-description input{
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#product-details .product-details-description input:focus{
+    outline: none;
+}
+
+#product-details .product-details-description span{
+    line-height: 25px;
 }
 
 @media (max-width: 799px) {

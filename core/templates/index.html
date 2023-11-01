@@ -10,6 +10,7 @@
     <button>Shop Now</button>
 </section>
 
+<!--
 <section id="features">
     {% for feature in features %}
     <div id="feature-box">
@@ -18,13 +19,16 @@
     </div>
     {% endfor %}
 </section>
+-->
 <section id="products" class="products">
     <h2>Featured products</h2>
     <p>New Modern Design and Summer Collection</p>
     <div id="product-container" class="product-container">
         {% for product in products %}
         <div id="product" class="product">
-            <img src="{{product.image.url}}" alt="">
+            <a href="{% url 'core:product-details' product.id %}">
+                <img src="{{product.image.url}}" alt="">
+            </a>
             <div id="description" class="description">
                 <span>{{product.brand_name}}</span>
                 <h5>{{product.title}}</h5>
@@ -41,6 +45,7 @@
         {% endfor %}
     </div>
 </section>
+
 <section id="banner">
     <h4>Repair Services</h4>
     <h2>Up to <span>70% off</span> - All T-shirts & Accessories</h2>
