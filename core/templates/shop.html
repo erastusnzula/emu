@@ -9,14 +9,16 @@
 
 <section id="products" class="products">
     <div id="product-container" class="product-container">
-        {% for product in products %}
+        {% for product in object_list %}
         <div id="product" class="product">
-            <a href="{% url 'core:product-details' product.id %}">
+            <a href="{{product.get_product_absolute_url}}">
                 <img src="{{product.image.url}}" alt="">
             </a>
             <div id="description" class="description">
-                <span>{{product.brand_name}}</span>
-                <h5>{{product.title}}</h5>
+                <a href="{{product.get_product_absolute_url}}">
+                    <span>{{product.brand_name}}</span>
+                    <h5>{{product.name}}</h5>
+                </a>
                 <div id="stars" class="stars">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -36,15 +38,6 @@
     <a href="#"><i class="fa fa-arrow-right"></i> </a>
 </section>
 
-<section id="newsletter">
-    <div id="news-text">
-        <h4>Sign up for NewsLetter</h4>
-        <p>Get E-mail updates about our lattest shop and <span>special offers.</span></p>
-    </div>
-    <div id="news-form" class="form">
-        <input type="text" placeholder="Your email address">
-        <button type="submit">Sign Up</button>
-    </div>
-</section>
+
 
 {% endblock %}

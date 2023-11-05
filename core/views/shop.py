@@ -1,15 +1,9 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import ListView
 
-from core.models import Feature, Product
+from core.models.product import Product
 
 
-class Shop(View):
-    def get(self, *args, **kwargs):
-        features = Feature.objects.all()
-        products = Product.objects.all()
-        context = {
-            'features': features,
-            'products': products,
-        }
-        return render(self.request, 'shop.html', context)
+class Shop(ListView):
+    model = Product
+    template_name = 'shop.html'

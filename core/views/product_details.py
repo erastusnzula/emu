@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import DetailView
 
-from core.models import Feature, Product
+from core.models.product import Product
 
 
-class ProductDetails(View):
-    def get(self, request,product_id):
-        product = Product.objects.get(id=product_id)
-        products = Product.objects.all()[:4]
-        context = {
-            'product': product,
-            'products': products,
-        }
-        return render(request, 'product-details.html', context)
+class ProductDetails(DetailView):
+    model = Product
+    template_name = 'product-details.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProductDetails,
+                        self).get_context_data(**kwargs)
+        context["products"] = Product.objects.all()[:4]
+        return context

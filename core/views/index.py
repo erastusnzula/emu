@@ -1,15 +1,10 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import ListView
 
-from core.models import Feature, Product
+from core.models.product import Product
 
 
-class Index(View):
-    def get(self, *args, **kwargs):
-        features = Feature.get_features()
-        products = Product.get_products()
-        context = {
-            'features': features,
-            'products': products,
-        }
-        return render(self.request, 'index.html', context)
+class Index(ListView):
+    model = Product
+    template_name = 'index.html'
+

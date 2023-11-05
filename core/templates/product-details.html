@@ -5,40 +5,33 @@
 
 <section id="product-details" class="product-details">
     <div class="product-details-images" id="product-details-images">
-        <img src="{{product.image.url}}" alt="" width="100%" id="product-details-main-image">
+        <img src="{{object.image.url}}" alt="" width="100%" id="product-details-main-image">
         <div class="product-details-images-group">
+            {% for image in object.get_product_images_url %}
             <div class="product-details-images-col">
-                <img src="{{ product.image.url }}" alt="" width="100%" class="product-details-g-image">
+                <img src="{{image.image.url}}" alt="" width="100%" class="product-details-g-image">
             </div>
-            <div class="product-details-images-col">
-                <img src="{% static 'images/products/f3.jpg' %}" alt="" width="100%" class="product-details-g-image">
-            </div>
-            <div class="product-details-images-col">
-                <img src="{% static 'images/products/f4.jpg' %}" alt="" width="100%" class="product-details-g-image">
-            </div>
-            <div class="product-details-images-col">
-                <img src="{% static 'images/products/f5.jpg' %}" alt="" width="100%" class="product-details-g-image">
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="product-details-description" id="product-details-description">
-        <h6>Home / T-shirts</h6>
-        <h4>Men's Fashion T-shirts</h4>
-        <h2>$140.00</h2>
-        <select>
-            <option>Select Size</option>
-            <option>XL</option>
-            <option>L</option>
-            <option>Small</option>
-            <option>Large</option>
-        </select>
-        <input type="number" value="1">
-        <button type="submit">Add to Cart</button>
+        <h6>{{object.brand_name}}</h6>
+        <h4>{{object.name}}</h4>
+        <h2>${{object.price}}.00</h2>
+        <form class="details-form" action="{{object.add_to_cart_url}}" method='post' enctype="multipart/form-data">
+            <select name="size">
+                {% for size in object.size.all %}
+                <option>{{size}}</option>
+                {% endfor %}
+            </select>
+            {% csrf_token %}
+            <input type="number" id="quantity" name="quantity" value="1">
+            <button type="submit">Add to Cart</button>
+        </form>
+
         <h4>Product Details</h4>
         <span>
-            iuuiweuhuehwuhweuheuwheuwhuehruwhruhruwhruwhrwrhuwihruiwrwirhwihrwiuhriwhuiwhfuifsd
-            fjfdhfuiuhfuishfuiwhfuiwehuwhewuehwuiheuihqwuiqheuhqeuhwqiehqiuhwiqhwiuhqiheiuqeiuw
-            wieheiiudhuduhwuqiehqiuhweuiqhduiheiwudhuiwhduiwhduqiwhquihuiqhwiuqhwihqeiuwhduihdd
+            {{object.description}}
         </span>
     </div>
 </section>
@@ -49,25 +42,28 @@
     <div id="product-container" class="product-container">
         {% for product in products %}
         <div id="product" class="product">
-            <a href="{% url 'core:product-details' product.id %}">
+            <a href="{{product.get_product_absolute_url}}">
                 <img src="{{product.image.url}}" alt="">
             </a>
             <div id="description" class="description">
-                <span>{{product.brand_name}}</span>
-                <h5>{{product.title}}</h5>
+                <a href="{{product.get_product_absolute_url}}">
+                    <span>{{product.brand_name}}</span>
+                    <h5>{{product.title}}</h5>
+                </a>
                 <div id="stars" class="stars">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                 </div>
-                <h4>${{product.price}}</h4>
+                <h4 class="details-price">${{product.price}}</h4>
             </div>
             <a href="#"><i id="product-cart" class="fa fa-shopping-cart product-cart"></i></a>
         </div>
         {% endfor %}
     </div>
 </section>
+
 
 <script>
     const mainImage = document.getElementById("product-details-main-image");
