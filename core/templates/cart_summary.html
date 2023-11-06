@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<section class="cart-summary" id="cart-summary">
+    <h2>Cart Summary</h2>
+    <p>A summary of items in your cart.</p>
+    <table>
+        <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Reduce</th>
+            <th>Quantity</th>
+            <th>Add</th>
+            <th>Price</th>
+            <th>Delete</th>
+        </tr>
+        {% for order in orders %}
+        {% for product in order.products.all %}
+        <tr>
+
+            <td>{{forloop.counter}}</td>
+            <td>{{product.product.name}}</td>
+            <td><img class="cart-image" src="{{product.product.image.url}}" alt=""></td>
+
+            <td>
+                <a href="{% url 'core:reduce-cart-quantity' product.product.slug %}">
+                    <i class="fa fa-minus" id="cart-reduce"></i>
+                </a>
+            </td>
+
+            <td>{{product.quantity}}</td>
+            <td>
+                 <a href="{% url 'core:add-cart-quantity' product.product.slug %}">
+                <i class="fa fa-add" id="cart-add"></i>
+                 </a>
+            </td>
+            <td>${{product.get_total_price}}.00</td>
+            <td>
+                <a href="{% url 'core:remove-from-cart' product.product.slug %}">
+                <i class="fa fa-remove" id="cart-remove"></i>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="6">Total</td>
+            <td colspan="6">${{order.get_order_total}}</td>
+        </tr>
+        {% endfor %}
+
+
+    </table>
+</section>
+
+{% endblock %}
+
+
+
+
+
+

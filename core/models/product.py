@@ -66,6 +66,9 @@ class Product(models.Model):
     def add_to_cart_url(self):
         return reverse('core:add-to-cart', kwargs={'slug': self.slug})
 
+    def remove_from_cart(self):
+        return reverse('core:remove-from-cart', kwargs={'slug': self.slug})
+
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_gallery', blank=True,
@@ -79,3 +82,6 @@ class CartProduct(models.Model):
     quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
     size = models.CharField(max_length=255, default="")
+
+    def get_total_price(self):
+        return self.quantity * self.product.price

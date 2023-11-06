@@ -44,7 +44,7 @@
                 </div>
                 <h4>${{product.price}}</h4>
             </div>
-            <a href="#"><i id="product-cart" class="fa fa-shopping-cart product-cart"></i></a>
+            <a href="{% url 'core:cart-summary' %}"><i id="product-cart" class="fa fa-shopping-cart product-cart"></i></a>
         </div>
         {% endfor %}
     </div>

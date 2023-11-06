@@ -23,3 +23,9 @@ class Order(models.Model):
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
     ip = models.CharField(max_length=200, default="")
+
+    def get_order_total(self):
+        total = 0
+        for order in self.products.all():
+            total += order.get_total_price()
+        return total
