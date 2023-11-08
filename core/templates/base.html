@@ -33,8 +33,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'core:cart-summary' %}" id="cart">
-                    <span class="cart-count-badge">{{request.user|cart_count}}</span>
+
                     <i class="fa-solid fa-cart-shopping" id="base-cart"></i>
+                    <span class="cart-count-badge">{{request.user|cart_count}}</span>
                 </a>
             </li>
             <span class="nav-link" id="close"><i class="fa-solid fa-times"></i></span>
@@ -42,8 +43,9 @@
     </div>
     <div class="collapse-toggle" id="collapse-toggle">
         <a class="nav-link" href="{% url 'core:cart-summary' %}" id="toggle-cart">
-            <span class="cart-count-badge">{{request.user|cart_count}}</span>
+
             <i class="fa-solid fa-cart-shopping" id="base-cart-s"></i>
+            <span class="cart-count-badge">{{request.user|cart_count}}</span>
         </a>
         <div class="collapse-bars" id="collapse-bars">
             <span class="bar"></span>
